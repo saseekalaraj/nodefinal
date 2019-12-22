@@ -1,0 +1,16 @@
+{
+  "name": "backendapplication",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "nodeApp": "nodemon src/app.js"
+  },
+  "author": "sasee",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.2"
+  }
+}
