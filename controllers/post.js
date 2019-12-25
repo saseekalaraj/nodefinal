@@ -1,8 +1,10 @@
 const Post = require("../models/Post");
 exports.getPosts = (req, res) => {
-  const posts = Post.find().then(post => {
-    res.status(200).json({ post: post });
-  }).catch(err=>console.log(err))
+  Post.find().select("_id title body")
+    .then(post => {
+      res.status(200).json({ post: post });
+    })
+    .catch(err => console.log(err));
 };
 
 exports.createPosts = (req, res) => {
