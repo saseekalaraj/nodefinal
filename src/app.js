@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const expressValidator = require("express-validator");
-var cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
 dotenv.config();
 //Access Port
 const PORT = process.env.PORT || 8080;
@@ -39,6 +39,11 @@ app.use(cookieParser());
 app.use(expressValidator());
 app.use(postRoute);
 app.use(authRoute);
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401).send({ error: 'Unauthorized token...' });
+  }
+});
 
 app.listen(PORT, err => {
   if (err) return console.log(`Cannot Listen on PORT: ${PORT}`);
