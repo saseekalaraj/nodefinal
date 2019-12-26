@@ -28,6 +28,7 @@ const myOwnMiddleware = (req, res, next) => {
 app.use(morgan("dev"));
 app.use(myOwnMiddleware);
 app.use(bodyParser.json())
+app.use(expressValidator())
 app.use(postRoute);
 
 app.listen(PORT, err => {
