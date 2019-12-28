@@ -32,6 +32,7 @@ exports.createPosts = (req, res) => {
         });
       }
       res.json(result);
+      //console.log("err", req.profile);
     });
   });
 };

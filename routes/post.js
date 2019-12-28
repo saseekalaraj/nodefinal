@@ -6,7 +6,7 @@ const { userById } = require("../controllers/user");
 
 const router = express.Router();
 router.get("/post", getPosts);
-router.post("/post:userId", requireSignin, createPostValidator, createPosts);
+router.post("/post/:userId", requireSignin, createPosts, createPostValidator);
 
 //app will be first excute id
 router.param("userId", userById);
