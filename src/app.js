@@ -42,12 +42,8 @@ app.use(expressValidator());
 
 
 app.use(postRoute);
-<<<<<<< HEAD
-app.use(authRoute); 
-=======
 app.use(authRoute);
 app.use(userRoute);
->>>>>>> 4c42c6eff15c8b78c14e3e80fc38a276391aea5a
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
     res.status(401).send({ error: 'Unauthorized token...' });
