@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BaseUrl } from "../api/docs";
+import { signup } from "../auth/index";
 
 export default class Signup extends Component {
   constructor() {
@@ -45,7 +45,7 @@ export default class Signup extends Component {
       password
     };
     if (this.handleConfrimPassword()) {
-      this.signup(user).then(data => {
+      signup(user).then(data => {
         if (data.error) {
           this.setState({
             error: data.error
@@ -62,20 +62,6 @@ export default class Signup extends Component {
         }
       });
     }
-  };
-  signup = user => {
-    return fetch(`${BaseUrl}/signup`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(user)
-    })
-      .then(response => {
-        return response.json();
-      })
-      .catch(err => console.log(err));
   };
   render() {
     const message = (
